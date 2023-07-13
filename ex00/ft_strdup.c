@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 19:11:17 by deydoux           #+#    #+#             */
-/*   Updated: 2023/07/13 09:23:52 by deydoux          ###   ########.fr       */
+/*   Updated: 2023/07/13 17:13:53 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_strlen(char *str)
 {
 	int	i;
 
+	i = 0;
 	while (str[i])
 		i++;
 	return (i);
@@ -42,5 +43,5 @@ char	*ft_strdup(char *src)
 	dest = malloc(sizeof(char) * ft_strlen(src) + 1);
 	if (!dest)
 		return (NULL);
-	return (strcpy(dest, src));
+	return (ft_strcpy(dest, src));
 }
