@@ -6,11 +6,13 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:07:27 by deydoux           #+#    #+#             */
-/*   Updated: 2023/07/16 19:36:24 by deydoux          ###   ########.fr       */
+/*   Updated: 2023/07/17 13:20:11 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+int	ft_strlen(char *str);
 
 int	index_of(char c, char *str)
 {
@@ -45,16 +47,6 @@ int	check_base(char *base)
 	return (len <= 1);
 }
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 int	ft_atoi_base(char *str, char *base)
 {
 	int	i;
@@ -76,9 +68,4 @@ int	ft_atoi_base(char *str, char *base)
 	while (index_of(str[i], base) != -1)
 		n = n * base_len + index_of(str[i++], base);
 	return (sign * n);
-}
-
-char	*ft_itoa_base(int nbr, char *origin_str, char *base)
-{
-
 }
