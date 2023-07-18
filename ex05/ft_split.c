@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 08:08:55 by deydoux           #+#    #+#             */
-/*   Updated: 2023/07/18 00:05:36 by deydoux          ###   ########.fr       */
+/*   Updated: 2023/07/18 09:13:26 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,12 @@ int	strs_size(char *str, char *charset)
 	int	i;
 	int	size;
 
-	i = 0;
+	i = -1;
 	size = 1;
-	while (str[i] != 0)
-	{
-		if (!contains(charset, str[i]))
-			if (!str[i + 1] || contains(charset, str[i + 1]))
-				size++;
-		i++;
-	}
+	while (!str[++i])
+		if (!contains(charset, str[i])
+			&& (!str[i + 1] || contains(charset, str[i + 1])))
+			size++;
 	return (size);
 }
 
@@ -46,12 +43,9 @@ char	*segment_str(char *str, int start, int end)
 	int		i;
 
 	segment = malloc(sizeof(char) * (end - start + 1));
-	i = 0;
-	while (start + i <= end)
-	{
+	i = -1;
+	while (start + ++i <= end)
 		segment[i] = str[start + i];
-		i++;
-	}
 	segment[i] = 0;
 	return (segment);
 }
