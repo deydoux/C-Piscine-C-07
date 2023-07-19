@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 08:08:55 by deydoux           #+#    #+#             */
-/*   Updated: 2023/07/18 09:13:26 by deydoux          ###   ########.fr       */
+/*   Updated: 2023/07/19 13:23:48 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	strs_size(char *str, char *charset)
 
 	i = -1;
 	size = 1;
-	while (!str[++i])
+	while (str[++i])
 		if (!contains(charset, str[i])
 			&& (!str[i + 1] || contains(charset, str[i + 1])))
 			size++;
@@ -42,7 +42,7 @@ char	*segment_str(char *str, int start, int end)
 	char	*segment;
 	int		i;
 
-	segment = malloc(sizeof(char) * (end - start + 1));
+	segment = malloc(sizeof(char) * (end - start + 2));
 	i = -1;
 	while (start + ++i <= end)
 		segment[i] = str[start + i];
@@ -63,10 +63,9 @@ char	**ft_split(char *str, char *charset)
 	i = 0;
 	while (str[++end])
 	{
-		if (!str[end] || contains(charset, str[end]))
+		if (contains(charset, str[end]))
 			start = end + 1;
-		if (!contains(charset, str[end])
-			&& (!str[end + 1] || contains(charset, str[end + 1])))
+		else if (!str[end + 1] || contains(charset, str[end + 1]))
 			strs[i++] = segment_str(str, start, end);
 	}
 	strs[i] = 0;
