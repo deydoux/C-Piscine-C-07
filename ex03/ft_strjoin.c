@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 18:26:49 by deydoux           #+#    #+#             */
-/*   Updated: 2023/07/13 20:03:07 by deydoux          ###   ########.fr       */
+/*   Updated: 2023/07/19 08:14:27 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	str = malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
+	str[0] = 0;
 	i = 0;
 	while (i < size)
 	{
