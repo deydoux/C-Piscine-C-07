@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:13:15 by deydoux           #+#    #+#             */
-/*   Updated: 2023/07/17 13:19:49 by deydoux          ###   ########.fr       */
+/*   Updated: 2023/07/20 16:14:47 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_abs(int nbr)
 	return (nbr);
 }
 
-void	ft_rev_str(char *str, int size)
+char	*ft_rev_str(char *str, int size)
 {
 	int		i;
 	int		j;
@@ -48,6 +48,7 @@ void	ft_rev_str(char *str, int size)
 		i++;
 		j--;
 	}
+	return (str);
 }
 
 char	*ft_itoa_base(int nbr, char *base)
@@ -73,9 +74,10 @@ char	*ft_itoa_base(int nbr, char *base)
 	}
 	if (nbr < 0)
 		str[size++] = '-';
+	if (nbr == 0)
+		str[size++] = base[0];
 	str[size] = 0;
-	ft_rev_str(str, size);
-	return (str);
+	return (ft_rev_str(str, size));
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
